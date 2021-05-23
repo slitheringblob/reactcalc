@@ -1,0 +1,16 @@
+.Button{
+    display:flex;
+    height: 4em;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    color:black;
+    outline: 1px solid #888;
+    font-family: 'Roboto Mono', monospace;
+  }
+  
+  .operator {
+    background-color: #004c4c;
+    color: #fff;
+  }
