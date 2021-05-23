@@ -1,4 +1,5 @@
 //component file to store the theme objects
+
 export const lightTheme = {
     body: '#FFF',
     text: '#f0f0f0',

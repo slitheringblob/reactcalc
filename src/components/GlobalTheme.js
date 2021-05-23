@@ -1,5 +1,6 @@
 //global theme file that will act as a wrapper component for all the layers
 import { createGlobalStyle} from "styled-components"
+
 export const GlobalStyles = createGlobalStyle`
   body {
     background: ${({ theme }) => theme.body};

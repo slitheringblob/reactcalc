@@ -6,7 +6,7 @@ import {ThemeProvider} from "styled-components";
 import { GlobalStyles } from "./components/GlobalTheme.js";
 import { lightTheme, darkTheme } from "./components/Themes.js";
 
-//defined an object with all calculator operations for easy access through a common function
+//defined an object with all calculator operations for easy access
 const calculatorOperations = {
   '/': (prevValue, nextValue) => prevValue / nextValue,
   '*': (prevValue, nextValue) => prevValue * nextValue,
@@ -20,15 +20,16 @@ const calculatorOperations = {
 
 class App extends React.Component{
   
-constructor(props){
+//constructor to initialize the default state of the calculator
+  constructor(props){
 	super(props);
 	this.state={
 		inputValue:null,
     displayValue:'0',
 		operator:null,
-    waitingforOperand:false,
-    scientificmode:false,
-    theme:'light'
+    waitingforOperand:false, //to show intermediate results
+    scientificmode:false, //to toggle scietific mode buttons 
+    theme:'light' // to toggle light/dark mode
 		
 	};
 }
@@ -61,7 +62,7 @@ lightTheme = () => {
 addtoInput = val =>{
   const { displayValue, waitingForOperand } = this.state
 
-    if (waitingForOperand) {
+    if (waitingForOperand) { //to see if we have a operand in the stack
       this.setState({
         displayValue: String(val),
         waitingForOperand: false
@@ -78,30 +79,30 @@ performOperation = nextOperator => {
   const { value, displayValue, operator } = this.state
   const inputValue = parseFloat(displayValue)
 
-  if (value === null) {     //check if its the first number 
+  if (value === null) {
     this.setState({
            
            value: inputValue
          })
         }
-  else if (operator){
+  else if (operator){ //checks if an operator button is pressed
     
     const currentValue = value || 0
-    console.log("current value in elif",currentValue)
     const newValue = calculatorOperations[operator](currentValue, inputValue) //call array of operations
-    console.log("calculated value in elif",newValue)
-
+    
     this.setState({
              value: newValue,
              displayValue: String(newValue)
      })
-     
   }
+  
   this.setState({
          waitingForOperand: true,
          operator: nextOperator
  })
+
 }
+
 //function to clear the stack of the calculator
 clearAll=()=> {
   this.setState({
@@ -132,6 +133,7 @@ render(){
   const { scientificmode } = this.state;
   
   return (
+    //wrapper-component to deliver theme
     <ThemeProvider theme={this.state.theme === 'light' ? lightTheme : darkTheme}>
     <>
     <GlobalStyles/>
