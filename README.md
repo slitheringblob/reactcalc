@@ -1,5 +1,5 @@
 # Simple Calculator with a scientific toggle and light/dark Mode
-A simple react calculator with 3 scietific operations and a light/dark mode toggle.
+A simple react calculator with 3 scientific operations and a light/dark mode toggle.
 
 # Getting Started with Create React App
 
